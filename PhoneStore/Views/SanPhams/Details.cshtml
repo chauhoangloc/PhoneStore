@@ -1,33 +1,27 @@
 ﻿@model PhoneStore.Models.SanPham
-
+@using PhoneStore.Models 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết sản phẩm</h2>
 
 <div>
     <h4>SanPham</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TenSanPham)
+            Tên sản Phẩm
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.TenSanPham)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DaBan)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DaBan)
-        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GiaBan)
+            Giá
         </dt>
 
         <dd>
@@ -35,19 +29,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh)
+            Hình Sản Phẩm
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.HinhAnh)
+            @Html.Image("../../" + Model.HinhAnh, Model.HinhAnh, "100")
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LoaiSanPham.TenLoaiSanPham)
+            Loại Sản Phẩm
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.LoaiSanPham.TenLoaiSanPham)
+        </dd>
+        <dt></dt>
+        <dd>
+            <br />
+            <a class="btn btn-success btn-sm " href="@Url.Action("AddToCart","Cart",new { MaSP=@Model.MaSanPham})">
+                <span class="glyphicon glyphicon-shopping-cart"></span>Thêm vào giỏ hàng
+            </a>
+            <a class="btn btn-success btn-sm" href="@Url.Action("Index","Home",new { MaSP=@Model.MaSanPham})">Quay Lại</a>
         </dd>
 
     </dl>

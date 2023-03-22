@@ -1,0 +1,82 @@
+﻿@model List<PhoneStore.Models.Cart>
+<link rel="stylesheet" href="~/Content/PagedList.css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewBag.Title</h2>
+<br />
+<br />
+<br />
+<br />
+
+@if (Model == null)
+{
+    <p class="text-info text-center">
+        Chưa có sản phẩm trong giỏ hàng
+    </p>
+}
+else
+{
+    <div class="row" style="text-align:center">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Mã Hàng</th>
+                        <th>Tên hàng</th>
+                        <th>Số Lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td class="text-center">@item.MaSanPham</td>
+                            <td><a targer="_blank" href="@Url.Action("Details","Sanphams",new { id = item.MaSanPham })">@item.TenSanPham</a></td>
+                            <td>
+                                <form action="@Url.Action("Update")" method="get">
+                                    <input type="hidden" name="MaSP" value="@item.MaSanPham" />
+                                    <input style="number" min="1" name="txtSoluong" value="@item.SoLuong" />
+                                    <button style="submit" class="btn btn-success btn-sm">Cập nhật </button>
+                                </form>
+                            <td>@item.GiaBan.ToString()VNĐ</td>
+                            <td>@item.TongTien.ToString()VNĐ </td>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Del", new { MaSP = item.MaSanPham })" onclick="return comfrim('Xóa Sản Phẩm này?');" class="btn btn-danger" btn-sm>Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="text-right"> Tổng Số lượng</td>
+                            <td>@Model.Sum(m => m.SoLuong)</td>
+                            <td>Tổng Tiền</td>
+                            <td>@Model.Sum(m => m.TongTien)VNĐ </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="6">
+                                <form actiom="@Url.Action("Order","GioHang")" method="get">
+                                    Thông tin đặt hàng-Email:<input type="email" name="Email" />
+                                    -Điện thoại: <input type="text" name="Phone" />
+                                    <input type="submit" value="Đặt hàng" , class="btn bbtn-success btn-sm" />
+                                    <a class="btn btn-success btn-sm" href="@Url.Action("Index","Home")">Tiếp tục mua</a>
+                                </form>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    }
+    >
