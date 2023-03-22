@@ -106,3 +106,7 @@ C:\Learn\Đồ ÁN\PhoneStore\PhoneStore\obj\Debug\PhoneStore.csproj.CoreCompile
 C:\Learn\Đồ ÁN\PhoneStore\PhoneStore\obj\Debug\PhoneStore.csproj.CopyComplete
 C:\Learn\Đồ ÁN\PhoneStore\PhoneStore\obj\Debug\PhoneStore.dll
 C:\Learn\Đồ ÁN\PhoneStore\PhoneStore\obj\Debug\PhoneStore.pdb
+C:\Learn\Đồ ÁN\PhoneStore\PhoneStore\bin\PagedList.dll
+C:\Learn\Đồ ÁN\PhoneStore\PhoneStore\bin\PagedList.Mvc.dll
+C:\Learn\Đồ ÁN\PhoneStore\PhoneStore\bin\PagedList.xml
+C:\Learn\Đồ ÁN\PhoneStore\PhoneStore\bin\PagedList.Mvc.xml

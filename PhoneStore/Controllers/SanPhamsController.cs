@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PhoneStore.Models;
+using System.IO;
 
 namespace PhoneStore.Controllers
 {
@@ -48,12 +49,20 @@ namespace PhoneStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSanPham,TenSanPham,MaLoaiSanPham,DaBan,GiaBan,HinhAnh")] SanPham sanPham)
+        public ActionResult Create([Bind(Include = "MaSanPham,TenSanPham,MaLoaiSanPham,DaBan,GiaBan,HinhAnh")] SanPham sanPham, HttpPostedFileBase HinhSP)
         {
             if (ModelState.IsValid)
             {
+                if (HinhSP != null && HinhSP.ContentLength > 0)
+                {
+                    string filename = Path.GetFileName(HinhSP.FileName);
+                    string path = Server.MapPath("~/Images/" + filename);
+                    sanPham.HinhAnh = "Images/" + filename;
+                    HinhSP.SaveAs(path);
+                }
                 db.SanPhams.Add(sanPham);
                 db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
 
@@ -82,10 +91,17 @@ namespace PhoneStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSanPham,TenSanPham,MaLoaiSanPham,DaBan,GiaBan,HinhAnh")] SanPham sanPham)
+        public ActionResult Edit([Bind(Include = "MaSanPham,TenSanPham,MaLoaiSanPham,DaBan,GiaBan,HinhAnh")] SanPham sanPham, HttpPostedFileBase HinhSP)
         {
             if (ModelState.IsValid)
             {
+                if (HinhSP != null && HinhSP.ContentLength > 0)
+                {
+                    string filename = Path.GetFileName(HinhSP.FileName);
+                    string path = Server.MapPath("~/Images/" + filename);
+                    sanPham.HinhAnh = "Images/" + filename;
+                    HinhSP.SaveAs(path);
+                }
                 db.Entry(sanPham).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

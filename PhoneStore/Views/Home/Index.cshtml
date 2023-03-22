@@ -1,7 +1,9 @@
 ﻿
 @model IEnumerable<PhoneStore.Models.SanPham>
 @using PhoneStore.Models
+@using PagedList.Mvc;
 @using System.Linq
+<link rel="stylesheet" hreff="~/Content/PageList.css" />
 @{
     ViewBag.Title = "Home Page";
 }
@@ -14,29 +16,40 @@
 <br />
 <br />
 <br />
-<body>
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-sm-3" style="background-color:lavender;margin-top:10px;text-align:center;">
-                <span class="awl-product-label awl-type-label awl-type-label-standard" style="display:table;position:relative;line-height:1;white-space:nowrap;vertical-align:baseline;font-size:16px;;font-weight:950;font-style:normal;letter-spacing:0px;;color:#fff;opacity:1;margin:0px 0px 0px 0px;">
-                    <span class="awl-label-text" style="display:table-cell;padding:0.3em 0.6em 0.3em 0.6em;z-index:1;background:#ef4545;position:relative;line-height:1;border-radius:0;">
-                        <span class="awl-inner-text">HOT</span>
+<div class="row">
+
+    <body>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-3" style="background-color:lavender;margin-top:10px;text-align:center;">
+                    <span class="awl-product-label awl-type-label awl-type-label-standard" style="display:table;position:relative;line-height:1;white-space:nowrap;vertical-align:baseline;font-size:16px;;font-weight:950;font-style:normal;letter-spacing:0px;;color:#fff;opacity:1;margin:0px 0px 0px 0px;">
+                        <span class="awl-label-text" style="display:table-cell;padding:0.3em 0.6em 0.3em 0.6em;z-index:1;background:#ef4545;position:relative;line-height:1;border-radius:0;">
+                            <span class="awl-inner-text">HOT</span>
+                        </span>
+                    </span><br />
+                    <div style="margin-top:5px;">@Html.Image("../" + item.HinhAnh, "alt", "100")<br /></div>
+                    <h>@Html.DisplayFor(modelItem => item.TenSanPham)</h> <br />
+                    @Html.DisplayFor(modelItem => item.GiaBan)<br />
+                    <span style="border-radius: 20px; font-weight: bold; background-color: #990000; position: relative; height: 23px; color: #fff;  ">
+                        Đã bán
+                        @Html.DisplayFor(modelItem => item.DaBan)
+                        <br />
                     </span>
-                </span><br />
-                <div style="margin-top:5px;">@Html.Image("../" + item.HinhAnh, "alt", "100")<br /></div>
-                <h>@Html.DisplayFor(modelItem => item.TenSanPham)</h> <br />
-                @Html.DisplayFor(modelItem => item.GiaBan)<br />
-                <span style="border-radius: 20px; font-weight: bold; background-color: #990000; position: relative; height: 23px; color: #fff;  ">
-                    Đã bán
-                    @Html.DisplayFor(modelItem => item.DaBan)
-                    <br />
-                </span>
-                <a class="btn btn-info btn-sm" href="@Url.Action("Details","SanPhams",new { id=item.MaSanPham})">Xem chi tiết</a>
-                <a class="btn btn-info btn-sm" href="@Url.Action("AddToCart","Cart",new { MaSanPham= item.MaSanPham})">Thêm Vào Giỏ</a>
-            </div>
-        }
+                    <a class="btn btn-info btn-sm" href="@Url.Action("Details","SanPhams",new { id=item.MaSanPham})">Xem chi tiết</a>
+                    <a class="btn btn-info btn-sm" href="@Url.Action("AddToCart","Cart",new { MaSanPham= item.MaSanPham})">Thêm Vào Giỏ</a>
+                </div>
+            }
 
-    </div>
-   
-</body>
+        </div>
+        @*<div>
+            Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+           new
+           {
+               page,
+               currentFilter = ViewBag.CurrentFilter
+           }))
+        </div>*@
+
+    </body>
