@@ -11,12 +11,27 @@ namespace PhoneStore.Controllers
     public class HomeController : Controller
     {
         phonestoreEntities db = new phonestoreEntities();
-        public ActionResult Index()
+        public ActionResult Index(int MaLoaiSP = 0, string SearchString = "")
         {
-            var sanphams = db.SanPhams.Include(s => s.LoaiSanPham);
-            return View(sanphams.ToList());
+            if (SearchString != "")
+            {
+                var sanpham = db.SanPhams.Include(s => s.LoaiSanPham).Where(x => x.TenSanPham.ToUpper().Contains(SearchString.ToUpper()));
+                return View(sanpham.ToList());
+            }
+            else
+            if (MaLoaiSP == 0)
+            {
+                var sanPhams = db.SanPhams.Include(s => s.LoaiSanPham).OrderBy(x => x.TenSanPham);
 
+                return View(sanPhams.ToList());
+            }
+            else
+            {
+                var sanPhams = db.SanPhams.Include(s => s.LoaiSanPham).Where(x => x.MaLoaiSanPham == MaLoaiSP);
+                return View(sanPhams.ToList());
+            }
         }
+
 
         public ActionResult About()
         {
