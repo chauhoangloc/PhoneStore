@@ -1,5 +1,6 @@
-﻿@model IEnumerable<PhoneStore.Models.SanPham>
+﻿@model PagedList.PagedList<PhoneStore.Models.SanPham>
 @using PhoneStore.Models
+@using PagedList.Mvc;
 <link rel="stylesheet" href="~/Content/PagedList.css" />
 @{
     ViewBag.Title = "Index";
@@ -60,11 +61,12 @@
     }
 
 </table>
-@*<div>
+<div>
     Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
-    @Html.PagedListPager(Model, page => Url.Action("Index", new
-{
-    page,
-    sortOrder = ViewBag.CurrentSort
-}))
-</div>*@
+    @Html.PagedListPager(Model, page => Url.Action("index",
+    new
+        {
+        page,
+        sortOrder = ViewBag.CurrentSort
+    }));
+</div>

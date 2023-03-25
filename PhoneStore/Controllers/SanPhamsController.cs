@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PhoneStore.Models;
 using System.IO;
-
+using PagedList;
 namespace PhoneStore.Controllers
 {
     public class SanPhamsController : Controller
@@ -16,10 +16,31 @@ namespace PhoneStore.Controllers
         private phonestoreEntities db = new phonestoreEntities();
 
         // GET: SanPhams
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, int? page)
         {
+            ViewBag.SortByName = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
+            ViewBag.SortByPrice = (sortOrder == "dongia" ? "dongia_desc" : "dongia");
+            ViewBag.CurrentSort = sortOrder;
             var sanPhams = db.SanPhams.Include(s => s.LoaiSanPham);
-            return View(sanPhams.ToList());
+            switch (sortOrder)
+            {
+                case "ten_desc":
+                    sanPhams = sanPhams.OrderByDescending(s => s.TenSanPham);
+                    break;
+                case "dongia_desc":
+                    sanPhams = sanPhams.OrderByDescending(s => s.GiaBan);
+                    break;
+                case "dongia":
+                    sanPhams = sanPhams.OrderBy(s => s.GiaBan);
+                    break;
+                default://mặc định sắp xếp theo tên sản phẩm
+                    sanPhams = sanPhams.OrderBy(s => s.TenSanPham);
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(sanPhams.ToPagedList(pageNumber, pageSize));
+
         }
 
         // GET: SanPhams/Details/5
@@ -91,16 +112,20 @@ namespace PhoneStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSanPham,TenSanPham,MaLoaiSanPham,DaBan,GiaBan,HinhAnh")] SanPham sanPham, HttpPostedFileBase HinhSP)
+        public ActionResult Edit([Bind(Include = "MaSanPham,TenSanPham,MaLoaiSanPham,DaBan,GiaBan,HinhAnh")] SanPham sanPham, HttpPostedFileBase Upload,string HinhSP)
         {
             if (ModelState.IsValid)
             {
-                if (HinhSP != null && HinhSP.ContentLength > 0)
+                if (Upload != null && Upload.ContentLength > 0)
                 {
-                    string filename = Path.GetFileName(HinhSP.FileName);
+                    string filename = Path.GetFileName(Upload.FileName);
                     string path = Server.MapPath("~/Images/" + filename);
                     sanPham.HinhAnh = "Images/" + filename;
-                    HinhSP.SaveAs(path);
+                    Upload.SaveAs(path);
+                }
+                else
+                {
+                    sanPham.HinhAnh = HinhSP;
                 }
                 db.Entry(sanPham).State = EntityState.Modified;
                 db.SaveChanges();
@@ -133,6 +158,7 @@ namespace PhoneStore.Controllers
             SanPham sanPham = db.SanPhams.Find(id);
             db.SanPhams.Remove(sanPham);
             db.SaveChanges();
+            System.IO.File.Delete(Server.MapPath("~/" + sanPham.HinhAnh));
             return RedirectToAction("Index");
         }
 
