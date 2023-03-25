@@ -20,16 +20,13 @@ namespace PhoneStore.Controllers
                 var sanpham = db.SanPhams.Include(s => s.LoaiSanPham).Where(x => x.TenSanPham.ToUpper().Contains(SearchString.ToUpper()));
                 return View(sanpham.ToList());
             }
-            else
-                SearchString = currentFilter;
-            ViewBag.CurrentFilter = currentFilter;
-            if (MaLoaiSP == 0)
+            else if (MaLoaiSP == 0)
             {
-                int pageSize = 12;
-                int pageNumber = (page ?? 1);
+                //int pageSize = 12;
+                //int pageNumber = (page ?? 1);
                 var sanPhams = db.SanPhams.Include(s => s.LoaiSanPham).OrderBy(x => x.TenSanPham);
 
-                return View(sanPhams.ToPagedList(pageNumber, pageSize));
+                return View(sanPhams.ToList());
             }
             else
             {
