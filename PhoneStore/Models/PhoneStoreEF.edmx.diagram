@@ -4,15 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="42e3fa794fff49bfb07bb7dd30c6b6dc" Name="Diagram1">
-        <EntityTypeShape EntityType="phonestoreModel.ChiTietHoaDon" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="phonestoreModel.ChiTietSanPham" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="phonestoreModel.HoaDon" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="phonestoreModel.KhachHang" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="phonestoreModel.LoaiSanPham" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+      <Diagram DiagramId="7dacd17f15ba40ac8db3c36b59a202d9" Name="Diagram1">
+        <EntityTypeShape EntityType="phonestoreModel.ChiTietHoaDon" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="phonestoreModel.ChiTietSanPham" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="phonestoreModel.HoaDon" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="phonestoreModel.KhachHang" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phonestoreModel.LoaiSanPham" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="phonestoreModel.NhanVien" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="phonestoreModel.SanPham" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="phonestoreModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phonestoreModel.SanPham" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="phonestoreModel.FK__ChiTietHo__MaHoa__20C1E124" ManuallyRouted="false" />
         <AssociationConnector Association="phonestoreModel.FK__ChiTietHo__MaSan__21B6055D" ManuallyRouted="false" />
         <AssociationConnector Association="phonestoreModel.FK__ChiTietSa__MaSan__164452B1" ManuallyRouted="false" />

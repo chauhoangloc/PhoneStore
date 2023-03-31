@@ -1,15 +1,10 @@
 ﻿@model List<PhoneStore.Models.Cart>
+
 <link rel="stylesheet" href="~/Content/PagedList.css" />
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>ViewBag.Title</h2>
-<br />
-<br />
-<br />
-<br />
 
 @if (Model == null)
 {
@@ -64,11 +59,10 @@ else
                         <tr>
                             <td colspan="6">
                                 <form actiom="@Url.Action("Order","GioHang")" method="get">
-                                    Thông tin đặt hàng-Email:<input type="email" name="Email" />
-                                    -Điện thoại: <input type="text" name="Phone" />
-                                    <input type="submit" value="Đặt hàng" , class="btn bbtn-success btn-sm" />
                                     <a class="btn btn-success btn-sm" href="@Url.Action("Index","Home")">Tiếp tục mua</a>
+
                                 </form>
+                                <a class="btn btn-success btn-sm" href="@Url.Action("Payment","Cart")">Thanh Toán</a>
                             </td>
                         </tr>
 
@@ -77,6 +71,7 @@ else
 
             </div>
 
-        </div>
+        </div>  
+
+
     }
-    >

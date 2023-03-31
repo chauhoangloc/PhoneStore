@@ -12,7 +12,7 @@ namespace PhoneStore.Controllers
 {
     public class KhachHangsController : Controller
     {
-        private phonestoreEntities db = new phonestoreEntities();
+        private phonestoreEntities1 db = new phonestoreEntities1();
 
         // GET: KhachHangs
         public ActionResult Index()

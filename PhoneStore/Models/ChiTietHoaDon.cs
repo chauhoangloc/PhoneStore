@@ -18,7 +18,6 @@ namespace PhoneStore.Models
         public int MaSanPham { get; set; }
         public int SoLuongMua { get; set; }
         public decimal GiaBan { get; set; }
-        public decimal TongTien { get; set; }
     
         public virtual HoaDon HoaDon { get; set; }
         public virtual SanPham SanPham { get; set; }

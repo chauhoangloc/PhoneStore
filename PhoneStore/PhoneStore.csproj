@@ -181,7 +181,17 @@
     <Compile Include="Controllers\ChiTietSanPhamsController.cs" />
     <Compile Include="Controllers\HoaDonsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoleAdminController.cs" />
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\ChiTietHoaDon.cs">
+      <DependentUpon>PhoneStoreEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietSanPham.cs">
+      <DependentUpon>PhoneStoreEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HoaDon.cs">
+      <DependentUpon>PhoneStoreEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ImageHelper.cs" />
     <Compile Include="Controllers\KhachHangsController.cs" />
     <Compile Include="Controllers\LoaiSanPhamsController.cs" />
@@ -193,15 +203,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ChiTietHoaDon.cs">
-      <DependentUpon>PhoneStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChiTietSanPham.cs">
-      <DependentUpon>PhoneStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HoaDon.cs">
-      <DependentUpon>PhoneStoreEF.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\KhachHang.cs">
       <DependentUpon>PhoneStoreEF.tt</DependentUpon>
@@ -228,10 +229,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PhoneStoreEF.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\SanPham.cs">
-      <DependentUpon>PhoneStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>PhoneStoreEF.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -288,6 +287,7 @@
       <DependentUpon>PhoneStoreEF.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Controller\Cart.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -369,6 +369,14 @@
     <Content Include="Views\SanPhams\Index.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\RoleAdmin\Index.cshtml" />
+    <Content Include="Views\RoleAdmin\Details.cshtml" />
+    <Content Include="Views\RoleAdmin\Create.cshtml" />
+    <Content Include="Views\RoleAdmin\Edit.cshtml" />
+    <Content Include="Views\RoleAdmin\Delete.cshtml" />
+    <Content Include="Views\Cart\Pass.cshtml" />
+    <Content Include="Views\Cart\Fails.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

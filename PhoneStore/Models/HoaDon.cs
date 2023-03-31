@@ -21,10 +21,13 @@ namespace PhoneStore.Models
         }
     
         public int MaHoaDon { get; set; }
-        public System.DateTime NgayLapHoaDon { get; set; }
+        public Nullable<System.DateTime> NgayLapHoaDon { get; set; }
         public decimal TongTien { get; set; }
-        public int MaKhachHang { get; set; }
-        public int MaNhanVien { get; set; }
+        public string shipadd { get; set; }
+        public Nullable<int> shipsdt { get; set; }
+        public string shipname { get; set; }
+        public Nullable<int> MaKhachHang { get; set; }
+        public Nullable<int> MaNhanVien { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }

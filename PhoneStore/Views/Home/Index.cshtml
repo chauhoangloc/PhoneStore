@@ -1,7 +1,7 @@
 ﻿
-@model IEnumerable<PhoneStore.Models.SanPham>
+@model PagedList.IPagedList<PhoneStore.Models.SanPham>
 @using PhoneStore.Models
-
+@using PagedList.Mvc;    
 @using System.Linq
 <link rel="stylesheet" hreff="~/Content/PageList.css" />
 @{
@@ -11,12 +11,8 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<br />
-<br />
-<br />
-<br />
-<br />
-<div class="row">
+
+<div class="row" >
 
     <body>
         <div class="row">
@@ -42,7 +38,7 @@
             }
 
         </div>
-        @*<div>
+        <div>
             Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
             @Html.PagedListPager(Model, page => Url.Action("Index",
            new
@@ -50,7 +46,7 @@
                page,
                currentFilter = ViewBag.CurrentFilter
            }))
-        </div>*@
+        </div>
 
     </body>
  

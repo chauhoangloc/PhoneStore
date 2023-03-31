@@ -13,10 +13,10 @@ namespace PhoneStore.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class phonestoreEntities : DbContext
+    public partial class phonestoreEntities1 : DbContext
     {
-        public phonestoreEntities()
-            : base("name=phonestoreEntities")
+        public phonestoreEntities1()
+            : base("name=phonestoreEntities1")
         {
         }
     
@@ -32,6 +32,5 @@ namespace PhoneStore.Models
         public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

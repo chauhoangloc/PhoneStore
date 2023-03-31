@@ -9,7 +9,6 @@
     <Property Name="MaSanPham" Type="Int32" Nullable="false" />
     <Property Name="SoLuongMua" Type="Int32" Nullable="false" />
     <Property Name="GiaBan" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-    <Property Name="TongTien" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
     <NavigationProperty Name="HoaDon" Relationship="Self.FK__ChiTietHo__MaHoa__20C1E124" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
     <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietHo__MaSan__21B6055D" FromRole="ChiTietHoaDon" ToRole="SanPham" />
   </EntityType>
@@ -28,10 +27,13 @@
       <PropertyRef Name="MaHoaDon" />
     </Key>
     <Property Name="MaHoaDon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NgayLapHoaDon" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NgayLapHoaDon" Type="DateTime" Precision="3" />
     <Property Name="TongTien" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-    <Property Name="MaKhachHang" Type="Int32" Nullable="false" />
-    <Property Name="MaNhanVien" Type="Int32" Nullable="false" />
+    <Property Name="shipadd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="shipsdt" Type="Int32" />
+    <Property Name="shipname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MaKhachHang" Type="Int32" />
+    <Property Name="MaNhanVien" Type="Int32" />
     <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHo__MaHoa__20C1E124" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
     <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKhachH__1CF15040" FromRole="HoaDon" ToRole="KhachHang" />
     <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDon__MaNhanVi__1DE57479" FromRole="HoaDon" ToRole="NhanVien" />
@@ -82,16 +84,6 @@
     <NavigationProperty Name="ChiTietSanPhams" Relationship="Self.FK__ChiTietSa__MaSan__164452B1" FromRole="SanPham" ToRole="ChiTietSanPham" />
     <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK__SanPham__MaLoaiS__1367E606" FromRole="SanPham" ToRole="LoaiSanPham" />
   </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <Association Name="FK__ChiTietHo__MaHoa__20C1E124">
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
     <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
@@ -129,7 +121,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__HoaDon__MaKhachH__1CF15040">
-    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="KhachHang">
@@ -141,7 +133,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__HoaDon__MaNhanVi__1DE57479">
-    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NhanVien">
@@ -164,7 +156,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="phonestoreEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="phonestoreEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
     <EntitySet Name="ChiTietSanPhams" EntityType="Self.ChiTietSanPham" />
     <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
@@ -172,7 +164,6 @@
     <EntitySet Name="LoaiSanPhams" EntityType="Self.LoaiSanPham" />
     <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
     <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <AssociationSet Name="FK__ChiTietHo__MaHoa__20C1E124" Association="Self.FK__ChiTietHo__MaHoa__20C1E124">
       <End Role="HoaDon" EntitySet="HoaDons" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />

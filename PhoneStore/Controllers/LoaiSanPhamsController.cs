@@ -12,7 +12,7 @@ namespace PhoneStore.Controllers
 {
     public class LoaiSanPhamsController : Controller
     {
-        private phonestoreEntities db = new phonestoreEntities();
+        private phonestoreEntities1 db = new phonestoreEntities1();
 
         // GET: LoaiSanPhams
         public ActionResult Index()

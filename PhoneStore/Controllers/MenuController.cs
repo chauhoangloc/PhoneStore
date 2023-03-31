@@ -12,7 +12,7 @@ namespace PhoneStore.Controllers
         // GET: Menu
         public ActionResult Index()
         {
-            using (phonestoreEntities db = new phonestoreEntities())
+            using (phonestoreEntities1 db = new phonestoreEntities1())
             {
                 var loaisp = db.LoaiSanPhams.ToList();
                 Hashtable tenLoaiSP = new Hashtable();

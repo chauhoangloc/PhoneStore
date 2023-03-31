@@ -12,7 +12,7 @@ namespace PhoneStore
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-           InitUserRole();
+          // InitUserRole();
         }
         private void InitUserRole()
         {
