@@ -22,6 +22,7 @@
                 @Html.ActionLink("Hoàng Lộc Store ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.Partial("_LoginPartial")
             </div>
+            <br>
             <div class="flex-row container">
                 @using (Html.BeginForm())
                 {
@@ -32,6 +33,7 @@
 
                 }
             </div>
+
             <div class="flex-row container">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Trang Chủ ", "Index", "Home")</li>
@@ -43,8 +45,11 @@
                         @{Html.RenderAction("Index", "Menu"); }
                     </li>
                     <li>@Html.ActionLink("Sản Phẩm", "Index", "SanPhams")</li>
-                    <li>@Html.ActionLink("Hóa Đơn", "Index", "HoaDons")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Hóa Đơn", "Index", "HoaDons")</li>
 
+                    }
 
                 </ul>
             </div>

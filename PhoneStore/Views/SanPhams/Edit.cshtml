@@ -15,7 +15,7 @@
 @using (Html.BeginForm("Edit", "Sanphams", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>SanPham</h4>
         <hr />
@@ -57,7 +57,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.Image("../../" + Model.HinhAnh, "", "100")
+                @Html.Image("../../" + Model.HinhAnh, "", "100", "100")
                 @Html.TextBox("HinhUpload", "", new { type = "file" })
                 @Html.Hidden("HinhSP")    }
             </div>

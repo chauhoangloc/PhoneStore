@@ -12,7 +12,7 @@ namespace PhoneStore.Controllers
 {
     public class ChiTietSanPhamsController : Controller
     {
-        private phonestoreEntities1 db = new phonestoreEntities1();
+        private phonestore1Entities db = new phonestore1Entities();
 
         // GET: ChiTietSanPhams
         public ActionResult Index()

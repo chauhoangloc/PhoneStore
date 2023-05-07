@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="phonestoreModelStoreContainer" CdmEntityContainer="phonestoreEntities1">
+  <EntityContainerMapping StorageEntityContainer="phonestore1ModelStoreContainer" CdmEntityContainer="phonestore1Entities">
     <EntitySetMapping Name="ChiTietHoaDons">
-      <EntityTypeMapping TypeName="phonestoreModel.ChiTietHoaDon">
+      <EntityTypeMapping TypeName="phonestore1Model.ChiTietHoaDon">
         <MappingFragment StoreEntitySet="ChiTietHoaDon">
           <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
           <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
@@ -12,7 +12,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ChiTietSanPhams">
-      <EntityTypeMapping TypeName="phonestoreModel.ChiTietSanPham">
+      <EntityTypeMapping TypeName="phonestore1Model.ChiTietSanPham">
         <MappingFragment StoreEntitySet="ChiTietSanPham">
           <ScalarProperty Name="MaChiTietSanPham" ColumnName="MaChiTietSanPham" />
           <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
@@ -22,7 +22,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="HoaDons">
-      <EntityTypeMapping TypeName="phonestoreModel.HoaDon">
+      <EntityTypeMapping TypeName="phonestore1Model.HoaDon">
         <MappingFragment StoreEntitySet="HoaDon">
           <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
           <ScalarProperty Name="NgayLapHoaDon" ColumnName="NgayLapHoaDon" />
@@ -32,11 +32,12 @@
           <ScalarProperty Name="shipname" ColumnName="shipname" />
           <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
           <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+          <ScalarProperty Name="trangthai" ColumnName="trangthai" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="KhachHangs">
-      <EntityTypeMapping TypeName="phonestoreModel.KhachHang">
+      <EntityTypeMapping TypeName="phonestore1Model.KhachHang">
         <MappingFragment StoreEntitySet="KhachHang">
           <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
           <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
@@ -47,7 +48,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="LoaiSanPhams">
-      <EntityTypeMapping TypeName="phonestoreModel.LoaiSanPham">
+      <EntityTypeMapping TypeName="phonestore1Model.LoaiSanPham">
         <MappingFragment StoreEntitySet="LoaiSanPham">
           <ScalarProperty Name="MaLoaiSanPham" ColumnName="MaLoaiSanPham" />
           <ScalarProperty Name="TenLoaiSanPham" ColumnName="TenLoaiSanPham" />
@@ -55,7 +56,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="NhanViens">
-      <EntityTypeMapping TypeName="phonestoreModel.NhanVien">
+      <EntityTypeMapping TypeName="phonestore1Model.NhanVien">
         <MappingFragment StoreEntitySet="NhanVien">
           <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
           <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
@@ -68,7 +69,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SanPhams">
-      <EntityTypeMapping TypeName="phonestoreModel.SanPham">
+      <EntityTypeMapping TypeName="phonestore1Model.SanPham">
         <MappingFragment StoreEntitySet="SanPham">
           <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
           <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
@@ -76,6 +77,7 @@
           <ScalarProperty Name="DaBan" ColumnName="DaBan" />
           <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
           <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="hot" ColumnName="hot" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

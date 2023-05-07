@@ -28,6 +28,7 @@ namespace PhoneStore.Models
         public string shipname { get; set; }
         public Nullable<int> MaKhachHang { get; set; }
         public Nullable<int> MaNhanVien { get; set; }
+        public Nullable<int> trangthai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }

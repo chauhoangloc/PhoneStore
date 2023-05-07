@@ -13,7 +13,7 @@ namespace PhoneStore.Controllers
 {
     public class SanPhamsController : Controller
     {
-        private phonestoreEntities1 db = new phonestoreEntities1();
+        private phonestore1Entities db = new phonestore1Entities();
 
         // GET: SanPhams
         public ActionResult Index(string sortOrder, int? page)

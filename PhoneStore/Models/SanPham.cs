@@ -27,6 +27,7 @@ namespace PhoneStore.Models
         public Nullable<int> DaBan { get; set; }
         public decimal GiaBan { get; set; }
         public string HinhAnh { get; set; }
+        public Nullable<int> hot { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }

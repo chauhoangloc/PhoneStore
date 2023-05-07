@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="~/Content/PagedList.css" />
 @{
     ViewBag.Title = "Index";
+
 }
 
 <h2>Danh Mục Sản Phẩm</h2>
@@ -42,13 +43,15 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TenSanPham)
+                <a href="@Url.Action("Details","SanPhams",new { id=item.MaSanPham})">
+                    @Html.DisplayFor(modelItem => item.TenSanPham)
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoaiSanPham)
             </td>
             <td>
-                @Html.Image("../" + item.HinhAnh, "alt", "100")
+                @Html.Image("../" + item.HinhAnh, "alt", "100", "100")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.GiaBan)
@@ -56,12 +59,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DaBan)
             </td>
-
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MaSanPham }) |
-                @Html.ActionLink("Details", "Details", new { id = item.MaSanPham }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MaSanPham })
-            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaSanPham }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MaSanPham }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaSanPham })
+                </td>
+            }
         </tr>
     }
 

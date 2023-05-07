@@ -39,5 +39,31 @@ namespace PhoneStore
             }
             catch { }
         }
+        private void InitUserRoleEmployee()
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            try
+            {
+
+                if (!roleManager.RoleExists("Emp"))
+                {
+                    var role = new IdentityRole();
+                    role.Name = "Emp";
+                    roleManager.Create(role);
+
+                    var user = new ApplicationUser();
+                    user.UserName = "nhanvien1@pt.com";
+                    user.Email = "nhanvien1@pt.com";
+                    string pass = "000000";
+                    var chkUser = userManager.Create(user, pass);
+
+                    if (chkUser.Succeeded)
+                        userManager.AddToRole(user.Id, "Emp");
+                }
+            }
+            catch { }
+        }
     }
 }

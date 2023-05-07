@@ -10,9 +10,10 @@ using PhoneStore.Models;
 
 namespace PhoneStore.Controllers
 {
+    [Authorize(Roles = "Admin,Emp")]
     public class HoaDonsController : Controller
     {
-        private phonestoreEntities1 db = new phonestoreEntities1();
+        private phonestore1Entities db = new phonestore1Entities();
 
         // GET: HoaDons
         public ActionResult Index()

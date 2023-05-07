@@ -55,3 +55,8 @@ body {
 	--wp--preset--spacing--70: 3.38rem;
 	--wp--preset--spacing--80: 5.06rem;
 }
+
+.row {
+	height: 100px;
+	wight: 200px;
+}

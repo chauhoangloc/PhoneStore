@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="phonestoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="phonestore1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="ChiTietHoaDon">
     <Key>
       <PropertyRef Name="MaHoaDon" />
@@ -31,6 +31,7 @@
     <Property Name="shipname" Type="nvarchar" MaxLength="100" />
     <Property Name="MaKhachHang" Type="int" />
     <Property Name="MaNhanVien" Type="int" />
+    <Property Name="trangthai" Type="int" />
   </EntityType>
   <EntityType Name="KhachHang">
     <Key>
@@ -71,6 +72,7 @@
     <Property Name="DaBan" Type="int" />
     <Property Name="GiaBan" Type="decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="HinhAnh" Type="varchar" MaxLength="100" />
+    <Property Name="hot" Type="int" />
   </EntityType>
   <Association Name="FK__ChiTietHo__MaHoa__20C1E124">
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
@@ -144,7 +146,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="phonestoreModelStoreContainer">
+  <EntityContainer Name="phonestore1ModelStoreContainer">
     <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietSanPham" EntityType="Self.ChiTietSanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />

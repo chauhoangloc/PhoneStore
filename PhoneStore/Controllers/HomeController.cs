@@ -10,7 +10,7 @@ namespace PhoneStore.Controllers
 {
     public class HomeController : Controller
     {
-        phonestoreEntities1 db = new phonestoreEntities1();
+        phonestore1Entities db = new phonestore1Entities();
         public ActionResult Index(string currentFilter, int?page, int MaLoaiSP = 0, string SearchString = "")
         {
             if (SearchString != "")
