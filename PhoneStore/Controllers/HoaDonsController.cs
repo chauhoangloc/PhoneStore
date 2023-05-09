@@ -13,7 +13,7 @@ namespace PhoneStore.Controllers
     [Authorize(Roles = "Admin,Emp")]
     public class HoaDonsController : Controller
     {
-        private phonestore1Entities db = new phonestore1Entities();
+        private phonestoreEntities2 db = new phonestoreEntities2();
 
         // GET: HoaDons
         public ActionResult Index()

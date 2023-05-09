@@ -10,7 +10,7 @@ namespace PhoneStore.Controllers
 {
     public class CartController : Controller
     {
-        private phonestore1Entities db = new phonestore1Entities();
+        private phonestoreEntities2 db = new phonestoreEntities2();
         // GET: Cart
         public ActionResult Index()
         {

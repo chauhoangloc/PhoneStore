@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="phonestore1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="phonestoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ChiTietHoaDon">
           <Key>
             <PropertyRef Name="MaHoaDon" />
@@ -151,7 +151,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="phonestore1ModelStoreContainer">
+        <EntityContainer Name="phonestoreModelStoreContainer">
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietSanPham" EntityType="Self.ChiTietSanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
@@ -188,7 +188,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="phonestore1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="phonestoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ChiTietHoaDon">
           <Key>
             <PropertyRef Name="MaHoaDon" />
@@ -347,7 +347,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="phonestore1Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="phonestoreEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="ChiTietSanPhams" EntityType="Self.ChiTietSanPham" />
           <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
@@ -385,9 +385,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="phonestore1ModelStoreContainer" CdmEntityContainer="phonestore1Entities">
+        <EntityContainerMapping StorageEntityContainer="phonestoreModelStoreContainer" CdmEntityContainer="phonestoreEntities2">
           <EntitySetMapping Name="ChiTietHoaDons">
-            <EntityTypeMapping TypeName="phonestore1Model.ChiTietHoaDon">
+            <EntityTypeMapping TypeName="phonestoreModel.ChiTietHoaDon">
               <MappingFragment StoreEntitySet="ChiTietHoaDon">
                 <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
                 <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
@@ -397,7 +397,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChiTietSanPhams">
-            <EntityTypeMapping TypeName="phonestore1Model.ChiTietSanPham">
+            <EntityTypeMapping TypeName="phonestoreModel.ChiTietSanPham">
               <MappingFragment StoreEntitySet="ChiTietSanPham">
                 <ScalarProperty Name="MaChiTietSanPham" ColumnName="MaChiTietSanPham" />
                 <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
@@ -407,7 +407,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HoaDons">
-            <EntityTypeMapping TypeName="phonestore1Model.HoaDon">
+            <EntityTypeMapping TypeName="phonestoreModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
                 <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
                 <ScalarProperty Name="NgayLapHoaDon" ColumnName="NgayLapHoaDon" />
@@ -422,7 +422,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KhachHangs">
-            <EntityTypeMapping TypeName="phonestore1Model.KhachHang">
+            <EntityTypeMapping TypeName="phonestoreModel.KhachHang">
               <MappingFragment StoreEntitySet="KhachHang">
                 <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
                 <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
@@ -433,7 +433,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LoaiSanPhams">
-            <EntityTypeMapping TypeName="phonestore1Model.LoaiSanPham">
+            <EntityTypeMapping TypeName="phonestoreModel.LoaiSanPham">
               <MappingFragment StoreEntitySet="LoaiSanPham">
                 <ScalarProperty Name="MaLoaiSanPham" ColumnName="MaLoaiSanPham" />
                 <ScalarProperty Name="TenLoaiSanPham" ColumnName="TenLoaiSanPham" />
@@ -441,7 +441,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhanViens">
-            <EntityTypeMapping TypeName="phonestore1Model.NhanVien">
+            <EntityTypeMapping TypeName="phonestoreModel.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
@@ -454,7 +454,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SanPhams">
-            <EntityTypeMapping TypeName="phonestore1Model.SanPham">
+            <EntityTypeMapping TypeName="phonestoreModel.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
                 <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
                 <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />

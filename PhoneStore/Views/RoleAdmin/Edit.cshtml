@@ -1,9 +1,13 @@
 ﻿@model PhoneStore.Models.RoleViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/HomeAdmin/Share/Layout.cshtml";
+}
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>RoleViewModel</h4>
         <hr />

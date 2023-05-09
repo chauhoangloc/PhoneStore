@@ -2,7 +2,7 @@
     @foreach (var item in ViewBag.TenLoaiSP)
     {
         <li>
-            <a href="@Url.Action("Index","Home",new { MaLoaiSP= item.Key})">
+            <a href="@Url.Action("Index","shopping",new { MaLoaiSP= item.Key})">
                 @item.Value
             </a>
         </li>

@@ -13,10 +13,10 @@ namespace PhoneStore.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class phonestore1Entities : DbContext
+    public partial class phonestoreEntities2 : DbContext
     {
-        public phonestore1Entities()
-            : base("name=phonestore1Entities")
+        public phonestoreEntities2()
+            : base("name=phonestoreEntities2")
         {
         }
     

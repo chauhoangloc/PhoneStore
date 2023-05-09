@@ -12,7 +12,7 @@ namespace PhoneStore.Controllers
 {
     public class ChiTietHoaDonsController : Controller
     {
-        private phonestore1Entities db = new phonestore1Entities();
+        private phonestoreEntities2 db = new phonestoreEntities2();
 
         // GET: ChiTietHoaDons
         public ActionResult Index()
@@ -39,7 +39,7 @@ namespace PhoneStore.Controllers
         // GET: ChiTietHoaDons/Create
         public ActionResult Create()
         {
-            ViewBag.MaHoaDon = new SelectList(db.HoaDons, "MaHoaDon", "MaHoaDon");
+            ViewBag.MaHoaDon = new SelectList(db.HoaDons, "MaHoaDon", "shipadd");
             ViewBag.MaSanPham = new SelectList(db.SanPhams, "MaSanPham", "TenSanPham");
             return View();
         }
@@ -49,7 +49,7 @@ namespace PhoneStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaHoaDon,MaSanPham,SoLuongMua,GiaBan,TongTien")] ChiTietHoaDon chiTietHoaDon)
+        public ActionResult Create([Bind(Include = "MaHoaDon,MaSanPham,SoLuongMua,GiaBan")] ChiTietHoaDon chiTietHoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace PhoneStore.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaHoaDon = new SelectList(db.HoaDons, "MaHoaDon", "MaHoaDon", chiTietHoaDon.MaHoaDon);
+            ViewBag.MaHoaDon = new SelectList(db.HoaDons, "MaHoaDon", "shipadd", chiTietHoaDon.MaHoaDon);
             ViewBag.MaSanPham = new SelectList(db.SanPhams, "MaSanPham", "TenSanPham", chiTietHoaDon.MaSanPham);
             return View(chiTietHoaDon);
         }
@@ -75,7 +75,7 @@ namespace PhoneStore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaHoaDon = new SelectList(db.HoaDons, "MaHoaDon", "MaHoaDon", chiTietHoaDon.MaHoaDon);
+            ViewBag.MaHoaDon = new SelectList(db.HoaDons, "MaHoaDon", "shipadd", chiTietHoaDon.MaHoaDon);
             ViewBag.MaSanPham = new SelectList(db.SanPhams, "MaSanPham", "TenSanPham", chiTietHoaDon.MaSanPham);
             return View(chiTietHoaDon);
         }
@@ -85,7 +85,7 @@ namespace PhoneStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHoaDon,MaSanPham,SoLuongMua,GiaBan,TongTien")] ChiTietHoaDon chiTietHoaDon)
+        public ActionResult Edit([Bind(Include = "MaHoaDon,MaSanPham,SoLuongMua,GiaBan")] ChiTietHoaDon chiTietHoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace PhoneStore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaHoaDon = new SelectList(db.HoaDons, "MaHoaDon", "MaHoaDon", chiTietHoaDon.MaHoaDon);
+            ViewBag.MaHoaDon = new SelectList(db.HoaDons, "MaHoaDon", "shipadd", chiTietHoaDon.MaHoaDon);
             ViewBag.MaSanPham = new SelectList(db.SanPhams, "MaSanPham", "TenSanPham", chiTietHoaDon.MaSanPham);
             return View(chiTietHoaDon);
         }

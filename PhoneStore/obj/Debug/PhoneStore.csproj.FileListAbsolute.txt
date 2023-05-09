@@ -441,7 +441,6 @@ C:\Learn\test\PhoneStore\PhoneStore\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Learn\test\PhoneStore\PhoneStore\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Learn\test\PhoneStore\PhoneStore\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Learn\test\PhoneStore\PhoneStore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Learn\test\PhoneStore\PhoneStore\obj\Debug\PhoneStore.csproj.AssemblyReference.cache
 C:\Learn\test\PhoneStore\PhoneStore\obj\Debug\PhoneStore.csproj.CoreCompileInputs.cache
 C:\Learn\test\PhoneStore\PhoneStore\obj\Debug\PhoneStore.csproj.CopyComplete
 C:\Learn\test\PhoneStore\PhoneStore\obj\Debug\PhoneStore.dll

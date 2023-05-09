@@ -10,37 +10,12 @@ namespace PhoneStore.Controllers
 {
     public class HomeController : Controller
     {
-        phonestore1Entities db = new phonestore1Entities();
-        public ActionResult Index(string currentFilter, int?page, int MaLoaiSP = 0, string SearchString = "")
+        phonestoreEntities2 db = new phonestoreEntities2();
+        public ActionResult Index()
         {
-            if (SearchString != "")
-            {
-                page = 1;
-                var sanpham = db.SanPhams.Include(s => s.LoaiSanPham).Where(x => x.TenSanPham.ToUpper().Contains(SearchString.ToUpper()));
-                int pageSize = sanpham.Count();
-                int pageNumber = (page ?? 1);
-                sanpham = sanpham.OrderBy(x => x.TenSanPham);
-                return View(sanpham.ToPagedList(pageNumber, pageSize));
-            }
-            else
-               SearchString = currentFilter;
-            ViewBag.CurrentFilter =currentFilter;
-            if (MaLoaiSP == 0)
-            {
-                int pageSize = 12;
-                int pageNumber = (page ?? 1);
-                var sanPhams = db.SanPhams.Include(s => s.LoaiSanPham).OrderBy(x => x.TenSanPham);
+                var sanphams = db.SanPhams.Include(s => s.LoaiSanPham);
+                return View(sanphams.ToList());
 
-                return View(sanPhams.ToPagedList(pageNumber,pageSize));
-            }
-            else
-            {
-                var sanPhams = db.SanPhams.Include(s => s.LoaiSanPham).Where(x => x.MaLoaiSanPham == MaLoaiSP);
-                sanPhams = sanPhams.OrderBy(x => x.TenSanPham);
-                int pageSize = sanPhams.Count();
-                int pageNumber = (page ?? 1);
-                return View(sanPhams.ToPagedList(pageNumber, pageSize));
-            }
         }
 
 

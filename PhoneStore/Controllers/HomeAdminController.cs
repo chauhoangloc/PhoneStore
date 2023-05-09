@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace PhoneStore.Controllers
 {
+    [Authorize(Roles = "Admin,Emp")]
     public class HomeAdminController : Controller
     {
         // GET: HomeAdmin

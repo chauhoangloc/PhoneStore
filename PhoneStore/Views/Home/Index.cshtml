@@ -1,136 +1,211 @@
 ﻿
-@model PagedList.IPagedList<PhoneStore.Models.SanPham>
+@model IEnumerable<PhoneStore.Models.SanPham>
 @using PhoneStore.Models
 @using PagedList.Mvc;
 @using System.Linq
-<link rel="stylesheet" href="~/Content/PageList.css" />
-<script src="~/Scripts/Controller/motion.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+@using System.Web.Mvc
+@using System.Web.WebPages
 @{
     ViewBag.Title = "Home Page";
 }
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="~/Content/index/css/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/index/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/Content/index/css/owl.carousel.css">
+<link rel="stylesheet" href="~/Content/style.css">
+<link rel="stylesheet" href="~/Content/index/css/responsive.css">
+<link rel="stylesheet" href="~/Content/PageList.css" />
+<link rel="stylesheet" href="~/Content/CSS.css" />
+<script src="~/Scripts/Controller/motion.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="slider-area">
+    <!-- Slider -->
+    <div class="block-slider block-slider4">
+        <ul class="" id="bxslider-home4">
+            <li>
+                <img src="~/Images/slider1.png" alt="Slide">
 
+            </li>
+            <li>
+                <img src="~/Images/slider2.png" alt="Slide">
 
-<div class="row" style="padding-top:30px;">
-    <body class="large-12 col">
-        <div class="container">
-            <p>&nbsp;</p>
-            <div id="wapper">
-                <div class="row filtering" style="text-align:center;">
+            </li>
+        </ul>
+    </div>
+    <!-- ./Slider -->
+</div> <!-- End slider area -->
 
-                    @foreach (var item in Model)
-                    {
-
-
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="row">
-                                <div class="wap-items-ss brbox">
-
-                                    <div class="wap-ss-img">
-                                        @if (item.hot == 1)
-                                        {
-                                            <span class="awl-product-label awl-type-label awl-type-label-standard" style="display:table;position:relative;line-height:1;white-space:nowrap;vertical-align:baseline;font-size:16px;;font-weight:950;font-style:normal;letter-spacing:0px;color:#fff;opacity:1;margin:0px 0px 0px 0px;">
-                                                <span class="awl-label-text" style="display:table-cell;padding:0.3em 0.6em 0.3em 0.6em;z-index:1;background:#ef4545;position:relative;line-height:1;border-radius:0;">
-                                                    <span class="awl-inner-text">New</span>
-                                                </span>
-                                            </span>
-                                        }
-                                        @if (item.hot == 0)
-                                        {
-                                            <br />
-
-
-                                        }
-                                        <div style="display: flex; justify-content: center; align-items: center;">
-                                            <a href="@Url.Action("Details","SanPhams",new { id=item.MaSanPham})"> <div style="margin-top:10px;height:100px;">@Html.Image("../" + item.HinhAnh, "alt", "100", "100")<br /></div></a>
-                                        </div>
-                                        <h>@Html.DisplayFor(modelItem => item.TenSanPham)</h> <br />
-                                        @Html.DisplayFor(modelItem => item.GiaBan)<br />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-
+<div class="promo-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="single-promo promo1">
+                    <i class="fa fa-refresh"></i>
+                    <p>Đổi trả</p>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            @foreach (var item in Model)
-            {
-
-                <div class="col-sm-3" style="background-color:lavender;margin-top:10px;text-align:center;">
-                    <span class="awl-product-label awl-type-label awl-type-label-standard" style="display:table;position:relative;line-height:1;white-space:nowrap;vertical-align:baseline;font-size:16px;;font-weight:950;font-style:normal;letter-spacing:0px;color:#fff;opacity:1;margin:0px 0px 0px 0px;">
-                        <span class="awl-label-text" style="display:table-cell;padding:0.3em 0.6em 0.3em 0.6em;z-index:1;background:#ef4545;position:relative;line-height:1;border-radius:0;">
-                            <span class="awl-inner-text">New</span>
-                        </span>
-                    </span>
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <a href="@Url.Action("Details","SanPhams",new { id=item.MaSanPham})"> @Html.Image("../" + item.HinhAnh, "alt", "100", "100")<br /></a>
-                    </div>
-                    <h>@Html.DisplayFor(modelItem => item.TenSanPham)</h> <br />
-                    @Html.DisplayFor(modelItem => item.GiaBan)<br />
-                    <span style="border-radius: 20px; font-weight: bold; background-color: #990000; position: relative; height: 23px; color: #fff;  ">
-                        Đã bán
-                        @Html.DisplayFor(modelItem => item.DaBan)
-                        <br />
-                    </span>
-                    <a class="btn btn-info btn-sm" href="@Url.Action("Details","SanPhams",new { id=item.MaSanPham})">Xem chi tiết</a>
-
-                    <a class="btn btn-info btn-sm" href="@Url.Action("AddToCart","Cart",new { MaSanPham= item.MaSanPham})">Thêm Vào Giỏ</a>
+            <div class="col-md-4 col-sm-6">
+                <div class="single-promo promo2">
+                    <i class="fa fa-truck"></i>
+                    <p>Miễn Phí Gia o Hàng</p>
                 </div>
-            }
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="single-promo promo3">
+                    <i class="fa fa-lock"></i>
+                    <p>Thanh Toán An Toàn</p>
+                </div>
+            </div>
 
         </div>
-        <div>
-            Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
-            @Html.PagedListPager(Model, page => Url.Action("Index",
-           new
-           {
-               page,
-               currentFilter = ViewBag.CurrentFilter
-           }))
-        </div>
+    </div>
+</div> <!-- End promo area -->
 
-    </body>
+<div class="maincontent-area">
+    <div class="row" style="padding-top:30px;">
+        <body class="large-12 col">
+
+        </body>
+        <div class="brands-area">
+            <div class="zigzag-bottom"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-list">
+                                <a href="/shopping?MaLoaiSP=5"><img src="~/Images/airpods.png" alt=""></a>
+                                <a href="/shopping?MaLoaiSP=2"><img src="~/Images/ipad.png" alt=""></a>
+                                <a href="/shopping?MaLoaiSP=1"><img src="~/Images/smartphone.png" alt=""></a>
+                                <a href="/shopping?MaLoaiSP=4"><img src="~/Images/notebook-computer.png" alt=""></a>
+                                <a href="/shopping?MaLoaiSP=3"><img src="~/Images/watch.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End brands area -->
+
+        <div class="product-widget-area">
+            <div class="zigzag-bottom"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="single-product-widget">
+                            <h2 class="product-wid-title">Sản Phẩm mới</h2>
+                            <a href="" class="wid-view-more">Xem thêm</a>
+                            @{
+                                int i = 0;
+
+                            }
+                            @foreach (var item in Model)
+                            {
+                             
+                                if (item.hot == 1)
+                                {
+                                    <div class="single-wid-product">
+                                        <a href="@Url.Action("Details", "SanPhams", new { id = item.MaSanPham })"><img src="~/@item.HinhAnh" alt="" class="product-thumb"></a>
+                                        <h2><a href="">@Html.DisplayFor(modelItem => item.TenSanPham)</a></h2>
+
+                                        <div class="product-wid-price">
+                                            <ins>@Html.DisplayFor(modelItem => item.GiaBan)</ins>
+                                        </div>
+                                    </div>
+                                    i++;
+                                }
+                                if (i == 3)
+                                {
+                                    break;
+                                }
+                            }
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="single-product-widget">
+                            <h2 class="product-wid-title">Hot Nhất</h2>
+                            <a href="#" class="wid-view-more">Xem thêm</a>
+                            @{
+                                int j = 0;
+
+                            }
+                            @foreach (var item in Model)
+                            {
+                                if (item.DaBan == 200)
+                                {
+                                    <div class="single-wid-product">
+                                        <a href="@Url.Action("Details", "SanPhams", new { id = item.MaSanPham })"><img src="~/@item.HinhAnh" alt="" class="product-thumb"></a>
+                                        <h2><a href="">@Html.DisplayFor(modelItem => item.TenSanPham)</a></h2>
+
+                                        <div class="product-wid-price">
+                                            <ins>@Html.DisplayFor(modelItem => item.GiaBan)</ins>
+                                        </div>
+                                    </div>
+                                    j++;
+                                }
+                                if (j == 3)
+                                {
+                                    break;
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="single-product-widget">
+                            <h2 class="product-wid-title">Đang giảm giá</h2>
+                            <a href="#" class="wid-view-more">Xem thêm</a>
+                            @{
+                                int k = 0;
+
+                            }
+                            @foreach (var item in Model)
+                            {
+                                int gia = (int)item.GiaBan;
+                                int c = (int)(gia * 1.2);
+                                if (item.DaBan == 10)
+                                {
+                                    <div class="single-wid-product">
+                                        <a href="@Url.Action("Details", "SanPhams", new { id = item.MaSanPham })"><img src="~/@item.HinhAnh" alt="" class="product-thumb"></a>
+                                        <h2><a href="">@Html.DisplayFor(modelItem => item.TenSanPham)</a></h2>
+
+                                        <div class="product-wid-price">
+                                            <ins>@Html.DisplayFor(modelItem => item.GiaBan)</ins> <del>@c</del>
+                                        </div>
+                                    </div>
+                                    k++;
+                                }
+                                if (k == 3)
+                                {
+                                    break;
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End product widget area -->
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js" integrity="sha512-eP8DK17a+MOcKHXC5Yrqzd8WI5WKh6F1TIk5QZ/8Lbv+8ssblcz7oGC8ZmQ/ZSAPa7ZmsCU4e/hcovqR8jfJqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript">
-        $('.filtering').slick({
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            arrows: true,
-            autoplay: true,
-            autoplaySpeed: 2000
-        });
-        $('.filtering2').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: true,
-            autoplay: true,
-            autoplaySpeed: 2000
-        });
+        <script src="https://code.jquery.com/jquery.min.js"></script>
 
-        var filtered = false;
+        <!-- Bootstrap JS form CDN -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-        $('.js-filter').on('click', function () {
-            if (filtered === false) {
-                $('.filtering').slick('slickFilter', ':even');
-                $(this).text('Unfilter Slides');
-                filtered = true;
-            } else {
-                $('.filtering').slick('slickUnfilter');
-                $(this).text('Filter Slides');
-                filtered = false;
-            }
-        });
+        <!-- jQuery sticky menu -->
+        <script src="~/Content/index/js/owl.carousel.min.js"></script>
+        <script src="~/Content/index/js/jquery.sticky.js"></script>
 
-    </script>
+        <!-- jQuery easing -->
+        <script src="~/Content/index/js/jquery.easing.1.3.min.js"></script>
+
+        <!-- Main Script -->
+        <script src="~/Content/index/js/main.js"></script>
+
+        <!-- Slider -->
+        <script type="text/javascript" src="~/Content/index/js/bxslider.min.js"></script>
+        <script type="text/javascript" src="~/Content/index/js/script.slider.js"></script>

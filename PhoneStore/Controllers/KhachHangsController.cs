@@ -10,9 +10,10 @@ using PhoneStore.Models;
 
 namespace PhoneStore.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class KhachHangsController : Controller
     {
-        private phonestore1Entities db = new phonestore1Entities();
+        private phonestoreEntities2 db = new phonestoreEntities2();
 
         // GET: KhachHangs
         public ActionResult Index()

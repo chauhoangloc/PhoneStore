@@ -7,6 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="~/Content/CSS.css" />
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/index/css/responsive.css">
 
 </head>
 
@@ -27,7 +29,7 @@
                 @using (Html.BeginForm())
                 {
                     <div class="form-group form-inline">
-                        Tìm: @Html.TextBox("SearchString", "", new { @class = "form-control" })
+                        Tìm: @Html.TextBox("Tìm", "", new { @class = "form-control" })
                         <input type="submit" class="btn btn-default" value="Search" />
                     </div>
 
@@ -44,10 +46,10 @@
                         </a>
                         @{Html.RenderAction("Index", "Menu"); }
                     </li>
-                    <li>@Html.ActionLink("Sản Phẩm", "Index", "SanPhams")</li>
+                    <li>@Html.ActionLink("Mua Sắm", "Index", "Shopping")</li>
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Hóa Đơn", "Index", "HoaDons")</li>
+                        <li>@Html.ActionLink("Quản Trị", "Index", "HomeAdmin")</li>
 
                     }
 
@@ -56,18 +58,91 @@
         </div>
     </div>
     <br />
-    <br /> <br />
+    <br />
     <br />
     <br />
     <br />
 
-
-    <br />
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div class="footer-top-area">
+                <div class="zigzag-bottom"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="footer-about-us">
+                                <h2><span>Hoàng Lộc Store</span></h2>
+                                <p>Được thành lập vào 18/5/2023.Hoàng Lộc Store sẽ cung cấp đầu đủ các thiết bị mà Apple sản xuất. Khi đến với chúng tôi bạn sẽ nhận ưu đãi không khác gì các Apple Store trên toàn thế giới! </p>
+                                <div class="footer-social">
+                                    <a href="https://www.facebook.com/loc.chau.564/" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                                    <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="footer-menu">
+                                <h2 class="footer-wid-title">Chi Nhánh </h2>
+                                <ul>
+                                    <li><a href="#">Cửa Hàng:xx Đường 3/2, P.3, Quận 10, Tp.HCM</a></li>
+                                    <li><a href="#">CN1:xx Đường Điện Biên Phủ, P.10, Quận 3, Tp.HCM</a></li>                            
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="footer-menu">
+                                <h2 class="footer-wid-title">Sản Phẩm</h2>
+                                <ul>
+                                    <li><a href="/shopping?MaLoaiSP=1">Iphone</a></li>
+                                    <li><a href="/shopping?MaLoaiSP=2">Ipad</a></li>
+                                    <li><a href="/shopping?MaLoaiSP=3">Apple Watch</a></li>
+                                    <li><a href="/shopping?MaLoaiSP=4">Macbook</a></li>
+                                    <li><a href="/shopping?MaLoaiSP=5">Airpod</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="footer-newsletter">
+                                <h2 class="footer-wid-title">Tin Tức</h2>
+                                <p>Hay để lại Email của bạn để nhận được các ưu đãi khủng từ cửa hàng. </p>
+                                <div class="newsletter-form">
+                                    <form action="#">
+                                        <input type="email" placeholder="Nhập địa chỉ Email!">
+                                        <input type="submit" value="Gửi">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End footer top area -->
+
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="copyright">
+                                <p>&copy; 2023 Hoàng Lộc Store.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="footer-card-icon">
+                                <i class="fa fa-cc-discover"></i>
+                                <i class="fa fa-cc-mastercard"></i>
+                                <i class="fa fa-cc-paypal"></i>
+                                <i class="fa fa-cc-visa"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 

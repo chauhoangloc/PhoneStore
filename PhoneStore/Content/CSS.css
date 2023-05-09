@@ -48,15 +48,58 @@ body {
 	--wp--preset--font-size--large: 36px;
 	--wp--preset--font-size--x-large: 42px;
 	--wp--preset--spacing--20: 0.44rem;
-	--wp--preset--spacing--30: 0.67rem;
+	--wp--preset--spacing--30: 0.67rem;	
 	--wp--preset--spacing--40: 1rem;
 	--wp--preset--spacing--50: 1.5rem;
 	--wp--preset--spacing--60: 2.25rem;
 	--wp--preset--spacing--70: 3.38rem;
 	--wp--preset--spacing--80: 5.06rem;
 }
-
+* {
+	box-sizing: border-box;
+}
+.footer-wrapper {
+	position: relative;
+	width: 100%;
+}
+footer {
+	display: block;
+	padding: 20px 0 0;
+}
+.footer-1 {
+	background-color: #f9f9f9;
+	border-top: 1px solid rgba(0,0,0,.05);
+}
 .row {
-	height: 100px;
-	wight: 200px;
+	max-width: 1170px;
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+	max-width: 1080px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.mb-0 {
+	margin-bottom: 0 !important;
+}
+.gallery-columns-3 .gallery-item, .large-columns-3 .flickity-slider>.col, .large-columns-3>.col {
+	flex-basis: 33.3333333333%;
+	max-width: 33.3333333333%;
+}
+.widget {
+	margin-bottom: 1.5em;
+}
+element.style {
+}
+.pb-0 {
+	padding-bottom: 0 !important;
+}
+.col{
+	margin: 0;
+	padding: 0 15px 30px;
+	position: relative;
+	width: 100%;
+}
+*, :after, :before, html {
+	box-sizing: border-box;
 }

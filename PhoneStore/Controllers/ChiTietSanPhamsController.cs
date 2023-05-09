@@ -10,9 +10,10 @@ using PhoneStore.Models;
 
 namespace PhoneStore.Controllers
 {
+    [Authorize(Roles = "Admin,Emp")]
     public class ChiTietSanPhamsController : Controller
     {
-        private phonestore1Entities db = new phonestore1Entities();
+        private phonestoreEntities2 db = new phonestoreEntities2();
 
         // GET: ChiTietSanPhams
         public ActionResult Index()
