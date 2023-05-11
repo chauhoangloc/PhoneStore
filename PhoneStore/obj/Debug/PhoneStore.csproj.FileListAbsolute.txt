@@ -445,3 +445,4 @@ C:\Learn\test\PhoneStore\PhoneStore\obj\Debug\PhoneStore.csproj.CoreCompileInput
 C:\Learn\test\PhoneStore\PhoneStore\obj\Debug\PhoneStore.csproj.CopyComplete
 C:\Learn\test\PhoneStore\PhoneStore\obj\Debug\PhoneStore.dll
 C:\Learn\test\PhoneStore\PhoneStore\obj\Debug\PhoneStore.pdb
+C:\Learn\test\PhoneStore\PhoneStore\obj\Debug\PhoneStore.csproj.AssemblyReference.cache

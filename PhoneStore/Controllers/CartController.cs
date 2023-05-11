@@ -79,14 +79,15 @@ namespace PhoneStore.Controllers
         }
 
         [HttpPost]
-        public ActionResult Payment(string shipName, string mobile, string address)
+        public ActionResult Payment(string shipName, string mobile, string address,string total)
         {
             var order = new HoaDon();
             order.NgayLapHoaDon = DateTime.Now;
             order.shipadd = address;
             order.shipsdt = Convert.ToInt32(mobile);
             order.shipname = shipName;
-            order.TongTien = 100000;
+            order.TongTien = Convert.ToInt64(total);
+            order.trangthai = 1;
 
 
             try

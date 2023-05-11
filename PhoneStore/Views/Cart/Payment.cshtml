@@ -15,74 +15,89 @@
     <p class="text-info text-center">
         Chưa có sản phẩm trong giỏ hàng
     </p>
+
 }
 else
 {
-<div class="row" style="text-align:center">
-    <div class="col-sm-12">
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <tr>
-                    <th>Mã Hàng</th>
-                    <th>Tên hàng</th>
-                    <th>Số Lượng</th>
-                    <th>Đơn giá</th>
-                    <th>Thành tiền</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    @foreach (var item in Model)
-                    {
+    <div class="row" style="text-align:center">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
                     <tr>
-                        <td class="text-center">@item.MaSanPham</td>
-                        <td><a targer="_blank" href="@Url.Action("Details","Sanphams",new { id = item.MaSanPham })">@item.TenSanPham</a></td>
-                        <td>
-                            <form action="@Url.Action("Update")" method="get">
-                                <input type="hidden" name="MaSP" value="@item.MaSanPham" />
-                                <input style="number" min="1" name="txtSoluong" value="@item.SoLuong" />
-                                <button style="submit" class="btn btn-success btn-sm">Cập nhật </button>
-                            </form>
-                        <td>@item.GiaBan.ToString()VNĐ</td>
-                        <td>@item.TongTien.ToString()VNĐ </td>
-                        </td>
-                        <td>
-                            <a href="@Url.Action("Del", new { MaSP = item.MaSanPham })" onclick="return comfrim('Xóa Sản Phẩm này?');" class="btn btn-danger" btn-sm>Xóa</a>
-                        </td>
-                    </tr>
-                }
+                        <th>Mã Hàng</th>
+                        <th>Tên hàng</th>
+                        <th>Số Lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                        <th></th>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td class="text-right"> Tổng Số lượng</td>
-                        <td>@Model.Sum(m => m.SoLuong)</td>
-                        <td>Tổng Tiền</td>
-                        <td>@Model.Sum(m => m.TongTien)VNĐ </td>
-                        <td></td>
-                    </tr>
-                </table>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td class="text-center">@item.MaSanPham</td>
+                            <td><a targer="_blank" href="@Url.Action("Details","Sanphams",new { id = item.MaSanPham })">@item.TenSanPham</a></td>
+                            <td>
+                                <form action="@Url.Action("Update")" method="get">
+                                    <input type="hidden" name="MaSP" value="@item.MaSanPham" />
+                                    <input style="number" min="1" name="txtSoluong" value="@item.SoLuong" />
+                                    <button style="submit" class="btn btn-success btn-sm">Cập nhật </button>
+                                </form>
+                            <td>@item.GiaBan.ToString()VNĐ</td>
+                            <td>@item.TongTien.ToString()VNĐ </td>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Del", new { MaSP = item.MaSanPham })" onclick="return comfrim('Xóa Sản Phẩm này?');" class="btn btn-danger" btn-sm>Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="text-right"> Tổng Số lượng</td>
+                            <td>@Model.Sum(m => m.SoLuong)</td>
+                            <td>Tổng Tiền</td>
+                            <td>@Model.Sum(m => m.TongTien)VNĐ </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
             </div>
 
-        </div>
+            <div class="cart_totals" style="float:left;">
+                <h2>Hóa đơn</h2>
+                <table cellspacing="0">
+                    <tbody>
+                        @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+                        {
+                            <tr class="form-group">
+                                <th>Người nhận</th>
+                                <td><input name="shipName" required class="form-control" /></td>
+                            </tr>
 
-        <div class="row">
-            @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
-            {
-                <div class="form-group">
-                    <label>Người nhận</label>
-                    <input name="shipName" required class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>Điện thoại</label>
-                    <input name="mobile" class="form-control" required maxlength="11" minlength="9" />
-                </div>
-                <div class="form-group">
-                    <label>Địa chỉ</label>
-                    <input name="address" required class="form-control" />
-                </div>
-                <button type="submit" class="btn">Gửi đơn hàng</button>
-            }
+                            <tr class="form-group">
+                                <th>Số điện thoại</th>
+                                <td><input name="mobile" class="form-control" required maxlength="11" minlength="9" /></td>
+                            </tr>
+
+                            <tr class="form-group">
+                                <th>Địa chỉ</th>
+                                <td><input name="address" required class="form-control" /></td>
+                            </tr>
+                            <tr class="form-group">
+                                <th>Tổng tiền</th>
+                                <td><input name="total" required class="form-control" value="@Model.Sum(m => m.TongTien)" readonly /></td>
+                            </tr>
+                            <tr>
+                                <td><button type="submit" class="btn">Gửi đơn hàng</button></td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
 
 
     }
