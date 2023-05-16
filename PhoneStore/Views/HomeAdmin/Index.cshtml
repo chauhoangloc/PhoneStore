@@ -6,6 +6,72 @@
     Layout = "~/Views/HomeAdmin/Share/Layout.cshtml";
 }
 
+<link rel="stylesheet" href="~/Content/style.css">
+<div class="promo-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="single-promo promo4">
+                    <p>Lượt truy cập</p>
+                    @ViewBag.SoNguoiTruyCap
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="single-promo promo2">
+                    <p>Số người đang Online</p>
+                    @ViewBag.SoNguoiOnline
+                </div>
+            </div>
 
-<link rel="stylesheet" href="~/Content/PagedList.css" />
-<h2>Danh Mục Sản Phẩm</h2>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Thống kê doanh thu</h2>
+                        <h3>@ViewBag.SoNguoiTruyCap</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    @using (Html.BeginForm("index", "HomeAdmin", FormMethod.Post))
+    {
+        <label for="nam">Chọn năm:</label>
+        <select id="nam" name="nam">
+            @for (int i = 2020; i <= DateTime.Now.Year; i++)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+        <button type="submit">Xem thống kê</button>
+    }
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+            datasets: [{
+                data: @Html.Raw(Json.Encode(ViewBag.Data)),
+                borderWidth: 1
+            }]
+        },
+
+    });
+    </script>
+
+</div>

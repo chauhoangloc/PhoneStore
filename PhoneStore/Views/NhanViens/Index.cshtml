@@ -1,64 +1,65 @@
 ﻿@model IEnumerable<PhoneStore.Models.NhanVien>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/HomeAdmin/Share/Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenNhanVien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgaySinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.role)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoDienThoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th></th>
-    </tr>
+<link rel="stylesheet" href="~/Content/style.css">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenNhanVien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgaySinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.role)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoDienThoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaNhanVien }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaNhanVien }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaNhanVien })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="container">
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Nhân Viên</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Tạo mới", "Create")
+    </p>
+    <div class="row" style="text-align:center">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr style="text-align:center;">
+                        <th>Id</th>
+                        <th>Tên nhân viên</th>
+                        <th>Ngày Sinh</th>
+                        <th>Địa chỉ</th>
+                        <th>Số điện thoại</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.MaNhanVien)</td>
+                            <td><a targer="_blank"> @Html.DisplayFor(modelItem => item.TenNhanVien)</a></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NgaySinh)
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.DiaChi)</td>
+                            <td>@Html.DisplayFor(modelItem => item.SoDienThoai)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                            <td>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.MaNhanVien })
+                                    @Html.ActionLink("Details", "Details", new { id = item.MaNhanVien })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.MaNhanVien })
+                                }
+                            </td>
+                        </tr>
+                    }
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,83 +1,65 @@
-﻿@model PagedList.PagedList<PhoneStore.Models.SanPham>
+﻿@model IEnumerable<PhoneStore.Models.SanPham>
 @using PhoneStore.Models
 @using PagedList.Mvc;
-<link rel="stylesheet" href="~/Content/PagedList.css" />
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/HomeAdmin/Share/Layout.cshtml";
-
 }
 
-<h2>Danh Mục Sản Phẩm</h2>
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<p>
-    @Html.ActionLink("Tạo mới", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Tên Sản Phẩm", "Index", new { sortOrder = ViewBag.SortByName })
-        </th>
-        <th>
-            Loại sản phẩm
-        </th>
-        <th>
-            Hình ảnh
+<link rel="stylesheet" href="~/Content/style.css">
+<div class="container">
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Sản Phẩm</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        </th>
-        <th>
-            @Html.ActionLink("Giá Bán", "Index", new { sortOrder = ViewBag.SortByPrice })
-        </th>
-        <th>
-            @Html.ActionLink("Đã Bán", "Index", new { sortOrder = ViewBag.SortBybuy })
-        </th>
+    <div class="row" style="text-align:center">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr style="text-align:center;">
+                        <th> @Html.ActionLink("Tên Sản Phẩm", "Index", new { sortOrder = ViewBag.SortByName })</th>
+                        <th>Hình Ảnh</th>
+                        <th>Loại Sản Phẩm</th>
+                        <th>@Html.ActionLink("Đã Bán", "Index", new { sortOrder = ViewBag.SortBybuy })</th>
+                        <th> @Html.ActionLink("Giá Bán", "Index", new { sortOrder = ViewBag.SortByPrice })</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.TenSanPham)</td>
+                            <td><a targer="_blank">@Html.Image("../" + item.HinhAnh, "alt", "100", "100")</a></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoaiSanPham)
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.DaBan)</td>
+                            <td>@Html.DisplayFor(modelItem => item.GiaBan)</td>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.MaSanPham }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.MaSanPham }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.MaSanPham })
+                                </td>
+                            }
+                        </tr>
+                    }
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                <a href="@Url.Action("Details","SanPhams",new { id=item.MaSanPham})">
-                    @Html.DisplayFor(modelItem => item.TenSanPham)
-                </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoaiSanPham)
-            </td>
-            <td>
-                @Html.Image("../" + item.HinhAnh, "alt", "100", "100")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GiaBan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DaBan)
-            </td>
-            @if (User.IsInRole("Admin"))
-            {
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MaSanPham }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.MaSanPham }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MaSanPham })
-                </td>
-            }
-        </tr>
-    }
-
-</table>
-<div>
-    Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
-    @Html.PagedListPager(Model, page => Url.Action("index",
-    new
-        {
-        page,
-        sortOrder = ViewBag.CurrentSort
-    }));
-</div>

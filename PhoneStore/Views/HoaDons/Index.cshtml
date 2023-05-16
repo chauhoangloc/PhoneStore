@@ -5,69 +5,60 @@
     Layout = "~/Views/HomeAdmin/Share/Layout.cshtml";
 }
 
-<h2 style="text-align:center; ">Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            ID
-        </th>
-        <th>
-            Ngày Lập Hóa Đơn
-        </th>
-        <th>
-            Tổng tiền
-        </th>
-        <th>
-            Tên Khách Hàng
-        </th>
-        <th>
-            Tên Nhân Viên
-        </th>
-        <th>
-            Địa Chỉ
-        </th>
-        <th></th>
-    </tr>
+<link rel="stylesheet" href="~/Content/style.css">
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <th>
-                @Html.DisplayFor(modelItem => item.MaHoaDon)
-            </th>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayLapHoaDon)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TongTien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.shipname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NhanVien.TenNhanVien)
-            </td>
-            <th>
-                @Html.DisplayFor(modelItem => item.shipadd)
-            </th>
-            @if (User.IsInRole("Admin"))
-            {
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MaHoaDon }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.MaHoaDon }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MaHoaDon })
-                </td>
+<link rel="stylesheet" href="~/Content/style.css">
+<div class="container">
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Hoá Đơn</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            }
-        </tr>
-    }
-
-</table>
-
-
+    <div class="row" style="text-align:center">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr style="text-align:center;">
+                        <th>Id</th>
+                        <th>Tên Khách hàng</th>
+                        <th>Tổng tiền</th>
+                        <th>Tên Nhân viên</th>
+                        <th>Địa chỉ</th>
+                        <th>Ngày mua hàng</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.MaHoaDon)</td>
+                            <td><a targer="_blank">@Html.DisplayFor(modelItem => item.shipname)</a></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TongTien)
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.NhanVien.TenNhanVien)</td>
+                            <td>@Html.DisplayFor(modelItem => item.shipadd)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NgayLapHoaDon)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MaHoaDon }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.MaHoaDon }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.MaHoaDon })
+                            </td>
+                        </tr>
+                    }
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
 

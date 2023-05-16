@@ -5,48 +5,57 @@
     Layout = "~/Views/HomeAdmin/Share/Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenKhachHang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoDienThoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th></th>
-    </tr>
+<link rel="stylesheet" href="~/Content/style.css">
+<div class="container">
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Khách Hàng</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenKhachHang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoDienThoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaKhachHang }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaKhachHang }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaKhachHang })
-        </td>
-    </tr>
-}
-
-</table>
+    <div class="row" style="text-align:center">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr style="text-align:center;">
+                        <th>Id</th>
+                        <th>Tên khách hàng</th>
+                        <th>Địa Chỉ</th>
+                        <th>Sđt</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-center">@Html.DisplayFor(modelItem => item.MaKhachHang)</td>
+                                <td><a targer="_blank"> @Html.DisplayFor(modelItem => item.TenKhachHang)</a></td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DiaChi)
+                                </td>
+                                <td> @Html.DisplayFor(modelItem => item.SoDienThoai)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                <td>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.MaKhachHang })
+                                        @Html.ActionLink("Details", "Details", new { id = item.MaKhachHang })
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.MaKhachHang })
+                                    }
+                                </td>
+                            </tr>
+                        }
+                     </tr>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
